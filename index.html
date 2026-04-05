@@ -9,46 +9,134 @@
 
 <style>
 body {
-  margin: 0;
-  font-family: 'Libre Baskerville', serif;
-  color: #2a2a2a;
-  background: linear-gradient(to bottom, #f7f4ee, #f0ece4);
+  margin: 0;
+  font-family: 'Libre Baskerville', serif;
+  background: linear-gradient(to bottom, #f7f4ee, #efeae0);
+  color: #2a2a2a;
 }
+
 .container {
-  max-width: 720px;
-  margin: 80px auto;
-  padding: 70px 60px;
-  background: #ffffff;
-  border: 1px solid #e8e2d8;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.06);
-  border-radius: 6px;
-  text-align: center;
+  max-width: 760px;
+  margin: 100px auto;
+  padding: 80px 70px;
+  background: #ffffff;
+  border: 1px solid #e6dfd3;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.07);
+  border-radius: 8px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  animation: fadeIn 1.2s ease forwards;
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .monogram {
-  font-family: 'Playfair Display', serif;
-  font-size: 52px;
-  letter-spacing: 6px;
-  background: linear-gradient(135deg, #c6b38e, #e8dcc3);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  letter-spacing: 8px;
+  background: linear-gradient(135deg, #cbb892, #e8dcc2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
 }
+
+h2 {
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: #a39a8d;
+  margin-bottom: 10px;
+}
+
 h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 46px;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  margin: 10px 0 30px;
 }
-.rsvp-section {
-  margin-top: 40px;
+
+.divider {
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #cbb892, transparent);
+  margin: 40px auto;
 }
+
+.text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #5c5750;
+}
+
+.date {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin: 30px 0;
+}
+
+.rsvp {
+  margin-top: 60px;
+  border-top: 1px solid #eee6da;
+  padding-top: 40px;
+}
+
+label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #7a746b;
+  display: block;
+  margin-top: 20px;
+}
+
 input, select {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d8d2c8;
+  padding: 10px 5px;
+  background: transparent;
+  font-family: 'Libre Baskerville', serif;
 }
+
+input:focus, select:focus {
+  outline: none;
+  border-bottom: 1px solid #cbb892;
+}
+
+.helper {
+  font-size: 12px;
+  color: #9a948a;
+  margin-top: 5px;
+}
+
+#companions {
+  display: none;
+}
+
 button {
-  width: 100%;
-  padding: 14px;
-  background: black;
-  color: white;
+  width: 100%;
+  padding: 15px;
+  margin-top: 25px;
+  background: #2a2a2a;
+  color: white;
+  border: none;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.thanks {
+  margin-top: 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
 }
 </style>
 </head>
@@ -56,29 +144,74 @@ button {
 <body>
 
 <div class="container">
-  <div class="monogram">L & M</div>
-  <h1>Leonardo & Mariana</h1>
-  <p>Nos casamos — 26 de Septiembre</p>
 
-  <div class="rsvp-section">
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLScJ6fU6CNH_-Rl9kdWMLMNHCdEyVpXmGskMBFPRbrackc-7Yg/formResponse" method="POST" target="hidden_iframe">
+  <div class="monogram">L & M</div>
 
-      <input type="text" name="entry.1119708956" placeholder="Nombre completo" required>
+  <h2>NOS CASAMOS</h2>
+  <h1>Leonardo & Mariana</h1>
 
-      <select name="entry.264250088">
-        <option value="">Asistencia</option>
-        <option value="Sí, asistiré">Sí, asistiré</option>
-        <option value="No podré asistir">No podré asistir</option>
-      </select>
+  <div class="divider"></div>
 
-      <input type="text" name="entry.227446353" placeholder="Acompañantes (separados por coma)">
+  <div class="text">
+    Queremos compartir con vos uno de los momentos más importantes de nuestra vida.
+  </div>
 
-      <button type="submit">Confirmar</button>
+  <div class="date">26 de Septiembre</div>
 
-    </form>
-    <iframe name="hidden_iframe" style="display:none;"></iframe>
-  </div>
+  <div class="text">
+    Por favor confirmar antes del 1 de agosto
+  </div>
+
+  <div class="rsvp">
+
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLScJ6fU6CNH_-Rl9kdWMLMNHCdEyVpXmGskMBFPRbrackc-7Yg/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="return sendForm()">
+
+      <label>Nombre completo</label>
+      <input type="text" name="entry.1119708956" required>
+
+      <label>Asistencia</label>
+      <select name="entry.264250088" id="asistencia" onchange="toggle()">
+        <option value="">Seleccionar</option>
+        <option value="Sí, asistiré">Sí, asistiré</option>
+        <option value="No podré asistir">No podré asistir</option>
+      </select>
+
+      <div id="companions">
+        <label>Acompañantes</label>
+        <input type="text" name="entry.227446353" placeholder="Ej: Juan Pérez, María López">
+        <div class="helper">Separar nombres con coma</div>
+      </div>
+
+      <button>CONFIRMAR</button>
+
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+    <div id="gracias" class="thanks"></div>
+
+  </div>
+
 </div>
+
+<script>
+function toggle() {
+  const val = document.getElementById('asistencia').value;
+  document.getElementById('companions').style.display =
+    val === 'Sí, asistiré' ? 'block' : 'none';
+}
+
+function sendForm() {
+  setTimeout(() => {
+    document.querySelector('form').style.display = 'none';
+    document.getElementById('gracias').innerHTML = "Gracias por confirmar";
+  }, 500);
+  return true;
+}
+</script>
 
 </body>
 </html>
